@@ -1,0 +1,42 @@
+How to secure mongodb
+
+Login to mongodb simply by calling 
+
+	mongo
+
+ in shell run
+	use admin;		
+
+create user with password as follows
+
+	db.createUser(
+	  {
+	    user: "sangram",
+	    pwd: "sangram",
+	    roles: [ { role: "userAdminAnyDatabase", db: "admin" } ]
+	  }
+);
+
+Open configuration file  as follows
+
+	sudo nano /etc/mongod.conf
+	  
+search for "security,add autorization:"enabled",don't forgor to uncomment security by removing # before it.
+It should look as follows
+
+	  security:
+	 	authorization: "enabled"
+
+Restart mongodb service as follows
+
+    sudo systemctl restart mongod
+
+you can check status of service as follows
+
+	sudo systemctl status mongod
+
+Now connect to mongodb using username & password as follows
+
+mongo --port 27017 -u "sangram" -p "sangram"   --authenticationDatabase "admin"
+  
+  

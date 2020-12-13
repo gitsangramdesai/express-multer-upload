@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    <%= title %>
+  </title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+
+<body>
+  <h1>
+    <%= title %>
+  </h1>
+  <p>Welcome to
+    <%= title %>
+  </p>
+
+  <form method="post" enctype="multipart/form-data" action="/upload" >
+    <table>
+      <tr>
+        <td colspan="2">
+          <%if(uploaded.length > 0){%>
+            <p><b>Uploaded Files:</b></p>
+            <%for( var i=0;i < uploaded.length;i++){%>
+              <p><%=uploaded[i]%></p>
+            <%}
+          }%>
+
+          <%if(message !=''){%>
+            <p><b><%=message%></b></p>
+          <%}%>
+        </td>
+      </tr>
+      <tr>
+        <td>Profile Pic (*.jpg|*.jpeg)</td>
+        <td>
+          <input type="file" name="profile_pic" />
+        </td>
+      </tr>
+      <tr>
+        <td>Text Data (*.txt) </td>
+        <td>
+          <input type="file" name="text_data" />
+        </td>
+      </tr>
+      <tr>
+        <td>Text</td>
+        <td>
+          <input type="text" name="text" />
+        </td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+          <input type="submit" name="Upload" />
+        </td>
+      </tr>
+    </table>
+  </form>
+</body>
+
+</html>
