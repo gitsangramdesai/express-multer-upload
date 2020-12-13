@@ -108,10 +108,11 @@ module.exports = function (commonModules) {
         message = err.message;
       } else {
         for (var i = 0; i < req.files.length; i++) {
-          uploaded.push(req.files[i].filename);
+          uploaded.push(req.files[i].originalname);
         }
       }
 
+      
       console.log(req.body.text);
 
       viewData = {
